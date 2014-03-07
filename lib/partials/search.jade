@@ -1,0 +1,17 @@
+extend globalLayout
+
+block content
+  h1 Search Results
+  ul.search-results
+    for package in matchingPackages
+      li.search-result.package
+        h2
+          a(href="/package/#{package.packageName}")
+            |#{package.packageName}
+        p.details
+          |#{package.version}
+        p #{package.description}
+  p.description
+    |There may be more on 
+    a(href="https://www.npmjs.org/search?q=#{q}", target="_blank")
+      |npmjs.org

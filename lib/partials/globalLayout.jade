@@ -1,0 +1,17 @@
+html
+    head
+        title WDPRO npm
+        link(rel="stylesheet", href="/normalize.css")
+        link(rel="stylesheet", href="/index.css")
+    body
+        #wrap
+            #content
+                #page
+                    header
+                        form(action="/search", method="get")
+                            input(type="search", name="q", placeholder="Search Packages", value="#{(q !== undefined) ? q : ''}")
+                        h1
+                            a#npm-logo(href="/")
+                                img(src="/npmMickey.png")
+
+                    block content

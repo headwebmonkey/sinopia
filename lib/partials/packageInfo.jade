@@ -1,0 +1,63 @@
+extend globalLayout
+
+block content
+  #package
+    header
+      h1 #{package.name}
+    p.description
+      |#{package.current.description}
+    pre.sh.sh_sourceCode
+      |npm install #{package.name}
+    table.metadata
+      if package.current.currentVersion !== undefined
+        tr
+        th Version
+        td
+          b
+            |#{package.currentVersion}
+      if package.current.license !== undefined
+        tr
+        th License
+        td
+          b
+            |#{package.current.license}
+      if package.current.keywords !== undefined
+        tr
+          th Keywords
+          td
+            b
+              |#{package.current.keywords.join(", ")}
+      if package.current.repository !== undefined
+        tr
+        th Repository
+        td
+          b
+            a(href="#{package.current.repository.url.replace('git', 'https')}", target="_blank")
+              |#{package.current.repository.url}
+      if package.current.homepage !== undefined
+        tr
+        th Homepage
+        td
+          b
+            a(href="#{package.current.homepage}", target="_blank")
+              |#{package.current.homepage}
+      if package.current.bugs !== undefined
+        tr
+        th Bugs
+        td
+          b
+            a(href="#{package.current.bugs.url}", target="_blank")
+              |#{package.current.bugs.url}
+      if package.current.dependencies !== undefined && Object.keys(package.current.dependencies).length > 0
+        tr
+          th Dependencies (#{Object.keys(package.current.dependencies).length})
+          td
+            b
+              |#{Object.keys(package.current.dependencies).join(", ")}
+    .details
+      ul.toc
+        li
+          a(href="#readme")
+            |Read Me
+      section#readme
+        |Coming Soon!

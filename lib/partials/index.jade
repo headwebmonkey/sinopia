@@ -1,0 +1,19 @@
+extend globalLayout
+
+block content
+  #index
+    h1 WDPRO Packaged Modules
+    p Total Cached/Private Packages: #{packageCount}
+    p You can use WDPRO npm via:
+    code
+      a(href="https://www.npmjs.org/doc/cli/npm-config.html#set", target="_blank")
+        |npm config set registry http://#{hostport[0]}:#{hostport[1]}/
+    table
+      tbody
+        tr
+          td
+            h2 Recently Updated/Added
+            ul
+              - for key in recentPackages
+                li #{key.lastUpdated} 
+                  a(href="/package/#{key.packageName}") #{key.packageName}
